@@ -2,12 +2,12 @@ Import-Module posh-git
 Import-Module PSReadline
 
 # user Emacs key binding
-#Set-PSReadLineOption -EditMode Emacs
+Set-PSReadLineOption -EditMode Emacs
 
 # Aliases
 
-function CD_WORK { Set-Location E:\work }
-Set-Alias cdwork CD_WORK
-
-function CD_CONFIGURATION { Set-Location E:\work\configuration }
-Set-Alias cdconfig CD_CONFIGURATION
+function EDIT_CONFIGURATION { 
+    cd $env:HOME\Documents\PowerShell\
+    explorer Microsoft.PowerShell_profile.ps1
+}
+Set-Alias Edit-Configuration EDIT_CONFIGURATION
