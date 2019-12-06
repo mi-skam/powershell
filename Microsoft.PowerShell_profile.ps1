@@ -1,13 +1,16 @@
 Import-Module posh-git
 Import-Module PSReadline
 
+# Load my scripts (not tests) automatically
+Resolve-Path $PSScriptRoot\Scripts\*.ps1 |
+    Where-Object { -not ($_.ProviderPath.Contains(".Tests.")) } |
+    Foreach-Object { . $_.ProviderPath }
+
 # user Emacs key binding
 Set-PSReadLineOption -EditMode Emacs
 
 # Aliases
 
-function EDIT_CONFIGURATION { 
-    cd $env:HOME\Documents\PowerShell\
-    explorer Microsoft.PowerShell_profile.ps1
-}
-Set-Alias Edit-Configuration EDIT_CONFIGURATION
+function which($cmd) { (Get-Command $cmd).Definition }
+function whoami { (get-content env:\userdomain) + "\" + (get-content env:\username) }
+
