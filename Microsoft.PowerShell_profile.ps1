@@ -1,4 +1,5 @@
 Import-Module PSReadline
+Import-Module plumps
 
 # user Emacs key binding
 Set-PSReadLineOption -EditMode Emacs
